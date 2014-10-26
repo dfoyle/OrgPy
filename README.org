@@ -1,0 +1,71 @@
+#+TITLE:	README for Python Org Reader
+#+AUTHOR:	github/dfoyle
+#+STARTUP:	content
+
+~py-org-reader~ is a simple collection of a Heading class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org files is organized.
+
+This is a *beginner* project by an aspiring programmer. It's likely to have some silly bugs and mistakes, and a somewhat lousy attempt at keeping a doc file. Don't forget to backup your org file before trying out the script.
+
+* Features
+
+The script is quite light on features at the moment. Here are some of the things it can do.
+
+- reading an `.org` file into a Heading class. A list of objects are kept under Heading.headlines class attribute.
+- support for following attributes: stars, unique id, parent id, title, content.
+- removing a header and all its children. 
+
+
+* Usage
+
+Eventually `py-org-reader` will be a command line script that enables fast note entry into a specified org file. In addition, it'll probably have some focus in exporting into other formats, especially into a [[http://www.sfwa.org/2005/01/the-obligatory-manuscript-format-article/][manuscript format]] appropriate for short stories and novels.
+
+** Basic usage
+
+Running the script in python interpreter.
+#+BEGIN_SRC bash
+$ python -i py-org-reader.py
+#+END_SRC
+
+This opens the script in the interpreter and allows you to call the functions. Eventually ~main()~ will contain more than just a simple call.
+
+Listing headings.
+#+BEGIN_SRC python
+zort()
+#+END_SRC
+
+Removing a heading using its id.
+#+BEGIN_SRC python
+remove_heading(1)
+#+END_SRC
+
+
+** Classes and methods
+
+- Class attributes: headlines
+- Instance attributes: id, parent_id, stars, title, and content
+- Methods: getters for the attributes (~get_id()~ etc) and ~add_to_context()~  
+
+** Functions
+
+~stars(line)~ returns the number of stars a heading has. Used with ~populate_headings()~.
+
+~populate_headings(line)~ reads through the org file and populates the Heading class accordingly. Used in ~main()~
+
+~remove_heading(heading_id)~ calls ~find_and_delete_children()~ and ~delete_heading()~. It finds the children of the heading recursively and deletes them, afterwards it deletes the heading itself.    
+
+
+* A Todo List
+
+0. rename zort()
+1. adding headings.
+2. relocating headings.
+3. writing to a new org file.
+4. exporting to other formats.
+5. tags
+6. properties
+7. getting parameters from org file. (#+PORC: file-mode:notes export-as:html overwrite:yes ... and so on.)
+
+* Version History
+
+- *v0.010:* Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
+
