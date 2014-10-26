@@ -1,0 +1,22 @@
+# A sample org file.
+
+* P0 ID1: Python stuff.
+Some simple content.
+** P1 ID2: General stuff.
+General stuff. 
+
+And some other stuff. *bold*
+
+|--------+-------|
+| table  | stuff |
+|--------+-------|
+| more   | table |
+| stuff  | I'm   |
+| afraid | ...   |
+|--------+-------|
+
+** P1 ID3: Python objects.
+*** P3 ID4: Subber.
+
+* P0 ID5: Another main heading.
+And its content.

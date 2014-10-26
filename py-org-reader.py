@@ -1,22 +1,10 @@
 """
 org-reader
-version : 0.1
+version : 0.010
 author : github/dfoyle
 last updated : 2014-10-24
 
 reads a simple org file and collects the headings as Heading objects.
-
-current Heading() attributes:
-- id
-- parent_id
-- stars
-- title
-- content
-
-TODO:
-1. tags and properties attributes.
-2. separate classes for tags and properties?
-3. adding headings.
 """
 
 # location of the org file to be used.
