@@ -1,8 +1,9 @@
 #+TITLE:	README for Python Org Reader
 #+AUTHOR:	github/dfoyle
 #+STARTUP:	content
+#+LAST-UPDATED: 2014-10-26, 18:10
 
-~py-org-reader~ is a simple collection of a Heading class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org files is organized.
+~py-org-reader~ is a simple collection a class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org files is organized.
 
 This is a *beginner* project by an aspiring programmer. It's likely to have some silly bugs and mistakes, and a somewhat lousy attempt at keeping a doc file. Don't forget to backup your org file before trying out the script.
 
@@ -28,44 +29,39 @@ $ python -i py-org-reader.py
 
 This opens the script in the interpreter and allows you to call the functions. Eventually ~main()~ will contain more than just a simple call.
 
-Listing headings.
+*Listing headings.*
 #+BEGIN_SRC python
 zort()
 #+END_SRC
 
-Removing a heading using its id.
+*Removing a heading using its id.*
 #+BEGIN_SRC python
 remove_heading(1)
 #+END_SRC
 
+*Adding a new heading.*
 
-** Classes and methods
+The function takes four arguments: new_pid, new_stars, new_title, and new_content. If left empty they'll default to 0 and "". ~new_stars~ argument is handled by the function and can be ignored. Normally, the function adds one to the parent's ~stars~ attribute.
 
-- Class attributes: headlines
-- Instance attributes: id, parent_id, stars, title, and content
-- Methods: getters for the attributes (~get_id()~ etc) and ~add_to_context()~  
-
-** Functions
-
-~stars(line)~ returns the number of stars a heading has. Used with ~populate_headings()~.
-
-~populate_headings(line)~ reads through the org file and populates the Heading class accordingly. Used in ~main()~
-
-~remove_heading(heading_id)~ calls ~find_and_delete_children()~ and ~delete_heading()~. It finds the children of the heading recursively and deletes them, afterwards it deletes the heading itself.    
+#+BEGIN_SRC python
+add_new_heading(new_pid=1, title="Hey there.", new_content="Here comes the pain!")
+#+END_SRC
 
 
-* A Todo List
+* ToDo List
 
 0. rename zort()
-1. adding headings.
+1. +adding headings.+
 2. relocating headings.
 3. writing to a new org file.
 4. exporting to other formats.
 5. tags
 6. properties
 7. getting parameters from org file. (#+PORC: file-mode:notes export-as:html overwrite:yes ... and so on.)
+8. get rid of the first None element in Heading.headlines. Potential for bugs.
 
-* Version History
+* The Changelog
 
-- *v0.010:* Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
+- *2014-10-27:* ~py-org-reader~ can now add new headings, and kind of writes to a file.
+- *2014-10-26: (v0.01)*  Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
 
