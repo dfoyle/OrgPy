@@ -1,8 +1,8 @@
-#+TITLE:	Python Org Reader
+#+TITLE: OrgPy	
 #+AUTHOR:	github/dfoyle
 #+STARTUP:	content
 
-~py-org-reader~ is a simple collection of a class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org file is organized.
+~OrgPy~ is a simple collection of a class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org file is organized.
 
 This is a *beginner* project by an aspiring programmer. It's very likely to have some silly bugs and mistakes, and a somewhat lousy attempt at keeping a doc file. Don't forget to backup your org file before trying out the script.
 
@@ -10,49 +10,41 @@ This is a *beginner* project by an aspiring programmer. It's very likely to have
 
 The script is quite light on features at the moment. Here are some of the things it can do.
 
-- reading an `.org` file into a Heading class. A list of objects are kept under Heading.headlines class attribute.
-- support for following attributes: stars, unique id, parent id, title, content.
-- removing a header and all its children. 
-
+- Reading an ~.org~ file into a DocNode class. Each headline is an ElementNode object. Both ElementNode and DocNode has children attributes as well some others.
+- Support for following attributes: stars, parent, children, title.
+- ~.org~ file settings and stuff that comes before the first headline are kept,respectively, at DocNode's settings and header attributes. 
 
 * Usage
 
-Eventually `py-org-reader` will be a command line script used for quick captures into a specified org file. In addition, it'll probably have some focus in exporting into other formats, especially into a [[http://www.sfwa.org/2005/01/the-obligatory-manuscript-format-article/][manuscript format]] appropriate for short stories and novels.
+Eventually ~OrgPy~ will be a command line script used for quick captures into a specified org file. In addition, it'll probably have some focus in exporting into other formats, especially into a [[http://www.sfwa.org/2005/01/the-obligatory-manuscript-format-article/][manuscript format]] appropriate for short stories and novels.
 
 ** Basic usage
 
 *Running the script in python interpreter.*
 #+BEGIN_SRC bash
-$ python -i py-org-reader.py
+$ python -i org.py
 #+END_SRC
 
 This opens the script in the interpreter and allows you to call the functions. Eventually ~main()~ will contain more than just a simple call.
 
-*Listing headings.*
+*Parsing an org file into DocNode object*
 #+BEGIN_SRC python
-zort()
+doc = parse_file(filename)
 #+END_SRC
 
-*Removing a heading using its id.*
+*Listing headings.*
 #+BEGIN_SRC python
-remove_heading(1)
+list_items(doc)
 #+END_SRC
 
 *Adding a new heading.*
-
-The function takes four arguments: new_pid, new_stars, new_title, and new_content. If left empty they'll default to 0 and "". ~new_stars~ argument is actually handled by the function and can be ignored, unless you really want to specify it. Normally, the function adds one to the parent's ~stars~ attribute.
-
 #+BEGIN_SRC python
-add_new_heading(new_pid=1, title="Hey there.", new_content="Here comes the pain!")
-#+END_SRC
-
-*Writing to a file.*
-#+BEGIN_SRC python
-write_to_file(filename)
+add_headline(parent, title)
 #+END_SRC
 
 * The Changelog
 
+- *2014-10-28:* restructured the classes, cleaned up the code and renamed the repo into ~OrgPy~
 - *2014-10-27:* ~py-org-reader~ can now add new headings, and kind of writes to a file. functions and classes are divided into separate files. writing to org files.
 - *2014-10-26: (v0.01)*  Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
 
