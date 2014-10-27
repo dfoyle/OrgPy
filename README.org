@@ -4,7 +4,7 @@
 
 ~py-org-reader~ is a simple collection of a class and assorted methods and functions, spun out of some personal interest in manipulating org files. Check out [[http://www.orgmode.org][org-mode]] for more details on how an org file is organized.
 
-This is a *beginner* project by an aspiring programmer. It's likely to have some silly bugs and mistakes, and a somewhat lousy attempt at keeping a doc file. Don't forget to backup your org file before trying out the script.
+This is a *beginner* project by an aspiring programmer. It's very likely to have some silly bugs and mistakes, and a somewhat lousy attempt at keeping a doc file. Don't forget to backup your org file before trying out the script.
 
 * Features
 
