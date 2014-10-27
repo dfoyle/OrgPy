@@ -10,6 +10,7 @@ class Heading(object):
     # and this makes it easier to assign id's.
     headlines = [None]
     last_id = 0
+    header = []
 
     def __init__(self, id=0, stars=0, parent_id=0, title="", content="", option="init"):
         """

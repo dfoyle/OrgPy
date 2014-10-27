@@ -1,4 +1,3 @@
-
 """
 org-reader
 version : 0.010
@@ -14,6 +13,8 @@ from functions import *
 
 # location of the org file to be used.
 filename = "temp.org"
+# filename = "python.org"
+# filename = "keybindings.org"
 f = open(filename, "r")
 
 
@@ -24,6 +25,20 @@ def main():
 
     global f
     lines = f.readlines()
+
+    # an org file might not start with a heading.
+    # this parts appends stuff that comes before the first
+    # heading into Heading.header
+    ind = 0
+    for line in lines:
+        if stars(line) == 1:
+            ind = lines.index(line)
+            break
+
+    stuff = lines[:ind]
+    for element in stuff:
+        Heading.header.append(element)
+
     populate_heading(lines)
 
 
@@ -36,3 +51,4 @@ def zort():
         print x
 
 main()
+write_to_file("new.org")

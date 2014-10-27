@@ -1,0 +1,129 @@
+# org file for key bindings and shortcuts because I keep forgetting them.
+
+
+* SPACEMACS:
+:PROPERTIES:
+:test: yes
+:END:
+** General:
+|-----------+------------------------|
+| <SPC> ?   | help keybindings       |
+| <SPC> :   | emacs commands         |
+| <SPC> z z | cursor global center   |
+|           |                        |
+| -- FILE   |                        |
+| <SPC> f f | ido find / create file |
+| <SPC> f s | save file              |
+| <SPC> f S | save all buffers       |
+| <SPC> f y | full path to the file  |
+|           |                        |
+| -- MISC   |                        |
+| <SPC> h t | helm theme select      |
+| <SPC> t n | line numbers           |
+|           |                        |
+|-----------+------------------------|
+# Spacesmacs/General
+
+** Buffers:
+|------------+-------------------|
+| <SPC> b s  | switch buffer     |
+|            |                   |
+| -- WINDOWS |                   |
+| <SPC> 1..6 | choose window     |
+| <SPC> w b  | window split, hor |
+| <SPC> w v  | window split, ver |
+| <SPC> w c  | window, delete    |
+| <SPC> w m  | maximize window   |
+|            |                   |
+|------------+-------------------|
+# SPACEMACS/Buffers
+
+** Org-Mode:
+
+** Tables:
+
+* TILING WINDOW MANAGER:
+Key-bindings for i3wm windows manages.
+** Windows:
+|-----------------+-------------------------|
+| ALT d           | application launcher    |
+| ALT ENTER       | new terminal            |
+| ALT SHIFT q     | quit window             |
+| ALT SHIFT e     | exit i3wm               |
+| ALT SHIFT r     | restart i3wm            |
+| ALT 1-9         | switch workspace        |
+|                 |                         |
+|                 |                         |
+| -- LAYOUTS      |                         |
+| ALT w           | tabbed layout           |
+| ALT e           | default                 |
+| ALT s           | stacked layout          |
+| ALT r           | re-size window          |
+| ALT h           | split horizontal toggle |
+| ALT v           | split vertical toggle   |
+|                 |                         |
+|                 |                         |
+| -- WINDOWS      |                         |
+| ALT arrow       | switch windows          |
+| ALT SHIFT arrow | move windows around     |
+| ALT f           | full screen             |
+| ALT a           | focus parent            |
+| ALT SHIFT #     | move to workspace       |
+| ALT SHIFT SPACE | float window            |
+|                 |                         |
+|-----------------+-------------------------|
+# TILING/Windows
+
+** Misc:
+|-------------+-------------------------|
+| MOD SHIFT - | make focused scratchpad |
+| MOD -       | show scratchpad         |
+|             |                         |
+|-------------+-------------------------|
+
+* VIM:
+** General:
+|----+--------------|
+| fd | escape       |
+| :  | vim commands |
+|    |              |
+|    |              |
+|    |              |
+|----+--------------|
+# VIM/General
+
+** Movement:
+|----------------+------------------------|
+| <SPC> l        | jump line / alphabet   |
+| <SPC> <SPC>    | jump letter            |
+|                |                        |
+| h,j,k,l        | home row               |
+| H, L           | line beginning and end |
+| <SPC> j h, j l | same, with marks       |
+|----------------+------------------------|
+# VIM/Movement 
+
+** Copy / Paste:
+
+** Text Manipulation:
+|-----------+---------------------|
+| -- EDIT   |                     |
+| <SPC> h e | edit all occurences |
+| <SPC> h n | next same word      |
+| - - e     | edit                |
+| <SPC> j j | split line          |
+|           |                     |
+|-----------+---------------------|
+# VIM/Text Manipulation
+
+** Bookmarks:
+|-----------+-------------------------|
+| <SPC> h b | open helm with bookmark |
+| CTRL d    | delete bookmark         |
+| CTRL e    | edit " "                |
+| CTRL f    | toggle file location    |
+| CTRL o    | open in a new window    |
+|-----------+-------------------------|
+# VIM/Bookmarks
+
+* Z-DOG:

@@ -7,24 +7,11 @@ def stars(line):
     returns the number of stars a heading has.
     """
 
-    # version 2
-    # if "*" in line:
-    #     if line.find("*") > 0:
-    #         x = 0
-    #     else:
-    #         x = line.find(" ")
-    # else:
-    #     x = 0
-
-    # version 3
-    chars = [" ", "*"]
     if "*" in line:
-        if line[1] not in chars:
-            x = 0
-        elif line.find("*") > 0:
-            x = 0
-        else:
-            x = line.find(" ")
+        start = line.find("*")
+        line = line[start:]
+        end = line.find(" ")
+        x = end
     else:
         x = 0
 
@@ -109,10 +96,10 @@ def delete_heading(hid):
     del Heading.headlines[ind]
 
 
-def write_list():
+def write_file():
     """
-    creates an ordered list of headings.
-    to be used with write_to_file()
+    writes to an org file... eventually.
+    for now, it just prints out the headings in order.
     """
 
     # a temporary list to hold the ordered headings.
@@ -166,37 +153,8 @@ def write_list():
     # file-write operations.
     # for element in the_list:
     #     print "id: ", element.get_id(), " parent: ", element.get_parent_id(), " title: ", element.get_title()
-    # for element in the_list:
-    #     print "*"*element.get_stars(), "ID", element.get_id(), " PR", element.get_parent_id(), " ", element.get_title()
-    return the_list
-
-
-def write_to_file(filename):
-    """
-    writes an ordered list of headings to a file.
-    """
-
-    the_list = write_list()
-
-    # overwrites the file, or creates a new one.
-    f = open(filename, "w")
-
-    # writing the stuff before the first heading.
-    for element in Heading.header:
-        f.write(element)
-
-    # writing heading.
     for element in the_list:
-        stars = "*"*element.get_stars()
-        f.write("%s (id:%s) (pid:%s) %s" % (stars, str(element.get_id()), str(element.get_parent_id()), element.get_title() ))
-        # f.write(element.get_content())
-        # f.write("\n")
-        if element.get_content() == "":
-            f.write("\n")
-        else:
-            f.write(element.get_content())
-
-    f.close()
+        print "*"*element.get_stars(), "ID", element.get_id(), " PR", element.get_parent_id(), " ", element.get_title()
 
 
 def find_children(parent_id):
