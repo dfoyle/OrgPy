@@ -1,0 +1,6 @@
+# Byte-compiled
+*.py[cod]
+
+# Personal backups.
+*.py.bak
+
