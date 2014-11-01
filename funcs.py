@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 """
 AUTHOR  :   github/dfoyle
 UPDATED :   2014-10-28
@@ -173,17 +172,19 @@ def list_items(element):
             list_items(child)
 
 
-def return_children(element):
+def return_children(element, initial=[]):
     """
     Returns a list of element's children recursively.
     """
 
-    result = []
+    result = initial
 
     for child in element.children:
         result.append(child)
+        print "Appending: ", child.title
         if len(child.children) > 0:
-            list_items(child)
+            temp = child
+            return_children(temp, result)
 
     return result
 

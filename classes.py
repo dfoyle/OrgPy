@@ -152,7 +152,7 @@ class ElementNode(object):
         """
 
         return self.title
-        
+
     # == SETTERS ---------------------------------------------------------
 
     def set_parent(self, parent):
