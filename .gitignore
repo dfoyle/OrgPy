@@ -4,3 +4,5 @@
 # Personal backups.
 *.bak
 
+# Other backups.
+*.org~
