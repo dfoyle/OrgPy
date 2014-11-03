@@ -42,9 +42,3 @@ list_items(doc)
 add_headline(parent, title)
 #+END_SRC
 
-* The Changelog
-
-- *2014-10-28:* restructured the classes, cleaned up the code and renamed the repo into ~OrgPy~
-- *2014-10-27:* ~py-org-reader~ can now add new headings, and kind of writes to a file. functions and classes are divided into separate files. writing to org files.
-- *2014-10-26: (v0.01)*  Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
-

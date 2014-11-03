@@ -1,27 +1,31 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
-AUTHOR  :   github/dfoyle
-UPDATED :   2014-10-28
+    classes
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-classes.py
-Contains the necessary classes and their methods.
+    Contains the necessary classes and their methods for reading
+    ´org´ files.
+
+    :author: dfoyle @ github.com
+    :updated: 2014-11-03
 """
 
 
 class DocNode(object):
-    """
-    The document.
+    """For the root of the document. Holds the top headlines in a
+    list of :attr:'children'.
     """
 
     def __init__(self):
-        """
-        Inits a new doc with following attributes.
-        """
+        """Inits a new doc with following attributes.
 
-        """
         An org file might not always start with a headline.
-        "settings"    : for org-mode settings. (#+SETTING: ...)
-        "header"      : Comments or simple text elements before the headlines.
+
+        :attr:'settings' for org-mode settings, usually on the top of
+        the file and starting with '#+': '#+TITLE:' etc.
+
+        :attr:'header' for comments or text that comes before the
+        first top headline.
         """
 
         self.title = "Root"
@@ -30,84 +34,72 @@ class DocNode(object):
         self.children = []
         self.stars = 0
 
-    # == GETTERS ----------------------------------------------------------
+    #: GETTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # not really used at the moment. Most of the functions directly
+    # access the attributes.
 
+    # TODO: Write getters and revise code to use them.
     def settings(self):
-        """
-        Return a list of settings.
-        """
+        """Return a list of settings."""
 
         return self.settings
 
     def header(self):
-        """
-        Return a list of elements before the first headline.
+        """Return a list of elements before the first headline.
+        :attr:'header'
         """
 
         return self.header
 
     def children(self):
-        """
-        Return the list of elements.
-        """
+        """ Return the list :attr:'children'."""
 
         return self.children
 
     def stars(self):
-        """
-        Return stars.
-        """
+        """Return :attr:'stars'."""
 
         return self.stars
 
-    # == SETTERS ---------------------------------------------------------
+    #: SETTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # == METHODS ----------------------------------------------------------
-
+    #: METHODS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def append(self, child):
-        """
-        Append the Doc with an ElementNode child.
-        """
+        """Append the Doc with a :class:'ElementNode' child."""
 
         self.children.append(child)
-        # update the element's parent. Just in case.
+        # Update the element's parent. Just in case.
         child.set_parent(self)
 
     def append_settings(self, setting):
-        """
-        Append the setting attribute.
-        """
+        """Append :attr:'settings'"""
 
         self.settings.append(setting)
 
     def append_header(self, head):
-        """
-        Append the header attribute.
-        """
+        """Append the list :attr:'header'."""
 
         self.header.append(head)
 
     def yield_stuff(self, attr):
-        """
-        Yielding through the members of list attributes.
-        - yield_stuff(element_node.elements())
+        """Yield the members of a list attribute.
+
+        Usage:
+        doc.yield_stuff(children)
         """
 
         types = [list, tuple, dict, set]
+
         if type(attr) in types:
             for item in attr:
                 yield item
 
 
 class ElementNode(object):
-    """
-    generic elements.
-    """
+    """For headlines."""
 
     def __init__(self, parent):
-        """
-        Basic init.
-        """
+        """Basic init."""
 
         self.parent = parent
         parent.append(self)
@@ -116,121 +108,86 @@ class ElementNode(object):
         self.content = []
         self.title = ""
 
-    # == GETTERS ---------------------------------------------------------
+    #: GETTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # TODO: Similarly to :class:'DocNode', fix attributes
+    # and the functions call them.
 
     def parent(self):
-        """
-        Return parent.
-        """
+        """Return :attr:'parent'."""
 
         return self.parent
 
     def stars(self):
-        """
-        Return stars.
-        """
+        """Return :attr:'stars'."""
 
         return self.stars
 
     def children(self):
-        """
-        Return a list of children.
-        """
+        """Return a list of :attr:'children'."""
 
         return self.children
 
     def content(self):
-        """
-        Return a list of content.
-        """
+        """Return a list of :attr:'content'."""
 
         return self.content
 
     def title(self):
-        """
-        Returns the title.
-        """
+        """Returns the :attr:'title'."""
 
         return self.title
 
-    # == SETTERS ---------------------------------------------------------
-
+    #: SETTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def set_parent(self, parent):
-        """
-        Set the parent.
-        """
+        """Set the :attr:'parent'."""
 
         self.parent = parent
 
     def set_title(self, title):
-        """
-        Set the title.
-        """
+        """Set the :attr:'title'."""
 
         self.title = title
 
-    # == METHODS ---------------------------------------------------------
-
+    #: METHODS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     def append(self, child):
-        """
-        Append child into self.children.
-        """
+        """Append child into :attr:'children'."""
 
         self.children.append(child)
         child.set_parent(self)
 
     def yield_stuff(self, attr):
-        """
-        Yielding through the members of list attributes.
-        - yield_stuff(element_node.elements())
+        """Yielding through the members of list attributes.
+
+        Usage:
+        headline.yield_stuff(title)
         """
 
         types = [list, tuple, dict, set]
+
         if type(attr) in types:
             for item in attr:
                 yield item
 
     def add_to_content(self, cont):
-        """
-        Append cont into the content list attribute.
-        """
+        """Append content into the list :attr:'content'."""
 
         self.content.append(cont)
 
-# Following classes are for things related to the ElementNodes
+
+# Following classes are not implemented yet. They are to be used
+# with :class:'ElementNode'.
 
 
-class AttNode(object):
-    """
-    generic attribute nodes.
-    """
-
-
-class SettingNode(object):
-    """
-    org mode settings.
+class Tags(object):
+    """For headline tags.
     """
 
 
-class CommentNode(object):
-    """
-    comments.
-    """
-
-
-class TagNode(AttNode):
-    """
-    tags for elements.
+class Properties(object):
+    """For headline properties.
     """
 
 
-class PropertiesNode(AttNode):
-    """
-    properties.
-    """
-
-
-class DateNode(AttNode):
-    """
-    date elements.
+class Comments(object):
+    """For headline comments.
     """
