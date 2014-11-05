@@ -3,6 +3,7 @@
 Full list of changes and fixes.
 
 * Version 0.1
+- added sorting headlines by title.
 - support for headline content partially added.
 - restructured the classes, cleaned up the code and renamed the repo into ~OrgPy~
 - Initial classes and functions. Some bugs while reading lines fixed. Changed the way functions get to a certain heading.
