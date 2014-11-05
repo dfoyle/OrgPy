@@ -29,9 +29,12 @@ def main():
     global filename
 
     doc = fn.parse_file(filename)
-    fn.list_items(doc)
 
     return doc
 
 # Temporary...
 x = main()
+y = fn.flatten_org(x, sort=True)
+
+for a in y:
+    print "*" * a.stars, a.title

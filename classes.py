@@ -108,6 +108,13 @@ class ElementNode(object):
         self.content = []
         self.title = ""
 
+    def __cmp__(self, other):
+        """For sorting by title.
+        """
+
+        if self.title != "" and other.title != "":
+            return cmp(self.title.lower(), other.title.lower())
+
     #: GETTERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # TODO: Similarly to :class:'DocNode', fix attributes
     # and the functions call them.

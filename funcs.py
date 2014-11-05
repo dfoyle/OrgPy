@@ -101,41 +101,75 @@ def parse_file(filename):
 #: FUNCTIONS-LISTING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-def list_items(element):
+def list_items(element, sort=False):
     """A temporary function used to print the items in
     a node.
     """
 
     # TODO: Should eventually get rid of this function.
+    if sort is True:
+        sort_headlines(element)
 
     for child in element.children:
         print "*"*child.stars, " ", child.title
+
         for line in child.content:
             print line
+
         if len(child.children) > 0:
             list_items(child)
 
 
-def return_children(element, initial=[]):
-    """Return the list of element's children recursively.
+def flatten_org(element, sort=False):
+    """Takes a DocNode object and returns a flat list of all its
+    children.
+
+    Uses recursion... both for sorting and flattening.
     """
 
-    result = initial
+    if sort is True:
+        sort_headlines(element)
 
-    for child in element.children:
-        result.append(child)
-        print "Appending: ", child.title
-        if len(child.children) > 0:
-            temp = child
-            return_children(temp, result)
+    # Holds the flat list.
+    result = []
 
-    return result
+    def looper(element):
+        """Internal recursion function... sorry!
+        """
+
+        #stars = "*" * element.stars
+        #title = element.title
+        #temp = "%s %s" % (stars, title)
+        #print "Appending: ", temp
+        result.append(element)
+
+        if len(element.children) > 0:
+            for child in element.children:
+                looper(child)
+
+    looper(element)
+
+    print "Done"
+
+    # Don't return the first element, which is the "Root"
+    return result[1:]
 
 
 #: FUNCTIONS-WRITING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 #: FUNCTIONS-HELPER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def sort_headlines(element):
+    """Loop through the element's children and sort.
+
+    :note: Doesn't return anything. Acts on the objects themselves.
+    """
+
+    target = element.children
+    target.sort()
+
+    for child in target:
+        sort_headlines(child)
 
 
 def text_to_lines(filename):
