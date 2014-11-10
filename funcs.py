@@ -155,6 +155,74 @@ def flatten_org(element, sort=False):
     return result[1:]
 
 
+#: FUNCTIONS-UTILITY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def change_parent(element):
+    """Change the parent of an element. (interactive)
+    """
+
+    # Find the element's parent.
+    the_parent = element.parent
+
+    # Find the parent's siblings.
+    if the_parent.title == "Root":
+        print "Can't change the parent."
+        return
+    else:
+        grandpa = the_parent.parent
+        siblings = []
+
+        for sibling in grandpa.children:
+            if sibling != the_parent:
+                siblings.append(sibling)
+
+        print element.title
+        print "Parent: \t", the_parent.title
+        print "Here are some of the choices for the new parent."
+        for ind, x in enumerate(siblings):
+            print "[%d] %s" % (ind, x.title)
+            # print "[", ind, "] ", x.title
+        choice = raw_input("Choose wisely: ")
+
+        # Change the element's parent.
+        new_parent = siblings[int(choice)]
+        # remove from older parent's children list.
+        the_parent.children.remove(element)
+        element.parent = new_parent
+        new_parent.append(element)
+
+        print "Done."
+
+
+def ancestor_tree(target):
+    """Change parent up the ancestor tree.
+
+    Used if the target is nested under more than one elements.
+    This changes an ANCESTOR's parent.
+    """
+
+    the_parent = target.parent
+
+    if the_parent.stars == 0:
+        # It's the root.
+        print "Can't change the parent."
+        return
+    elif the_parent.stars == 1:
+        change_parent(target)
+    elif the_parent.stars > 1:
+        parent_stars = the_parent.stars
+        while parent_stars > 1:
+            print "*" * the_parent.stars, the_parent.title
+            choice = raw_input("Do you want to change this level parent? (y / n)")
+
+            if choice == "y":
+                change_parent(target)
+                return
+            else:
+                target = target.parent
+                the_parent = target.parent
+                parent_stars -= 1
+
+
 #: FUNCTIONS-WRITING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 

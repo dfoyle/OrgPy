@@ -18,7 +18,7 @@ import classes as cs
 import funcs as fn
 
 #: SETTINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-filename = "python.org"
+filename = "temp.org"
 
 
 def main():
