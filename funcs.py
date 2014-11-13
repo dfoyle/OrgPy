@@ -223,6 +223,18 @@ def ancestor_tree(target):
                 parent_stars -= 1
 
 
+def remove_headline(element):
+    """Remove the element and all its children.
+    """
+
+    target = element
+
+    # Doesn't have any children... just remove the headline.
+    parent = target.parent
+    parent.children.pop(parent.children.index(target))
+    print "Done."
+
+
 #: FUNCTIONS-WRITING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
