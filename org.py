@@ -18,7 +18,7 @@ import classes as cs
 import funcs as fn
 
 #: SETTINGS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-filename = "temp.org"
+filename = "python.org"
 
 
 def main():
@@ -38,3 +38,6 @@ y = fn.flatten_org(x, sort=True)
 
 for a in y:
     print "*" * a.stars, a.title
+
+fn.write_org(filename, x)
+print "Done writing."

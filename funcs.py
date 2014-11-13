@@ -236,6 +236,32 @@ def remove_headline(element):
 
 
 #: FUNCTIONS-WRITING ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def write_org(filename, doc):
+    """Create a new org file with '_new' suffix.
+    """
+
+    new_file = filename[:-4] + "_new.org"
+    flat_list = flatten_org(doc)
+
+    fp = open(new_file, "w")
+
+    # Write DocNode.settings...
+    for line in doc.settings:
+        fp.write(line)
+
+    # Write DocNode.header...
+    for line in doc.header:
+        fp.write(line)
+
+    # Write the flattened list of elements.
+    for element in flat_list:
+        stars = "*" * element.stars
+        title = stars + " " + element.title
+        fp.write(title)
+        for line in element.content:
+            fp.write(line)
+
+    fp.close()
 
 
 #: FUNCTIONS-HELPER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
