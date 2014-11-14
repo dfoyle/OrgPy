@@ -310,18 +310,17 @@ def is_headline(line):
     """Check a line to see if it's a headline."""
 
     result = True
+    stripped_line = strip(line)
 
     # If it doesn't start with *, then it's not a headline.
     # Likely to cause some bugs in the future.
-    # TODO: Create a function to remove spaces before '*' in headlines.
-    # to prevent bugs resulting from user input.
-    if line[0] != "*":
+    if stripped_line[0] != "*":
         result = False
     else:
     # In org-mode bold objects are written between *'s. So a line
     # can start with something like "*Important*"
-        space = line.find(" ")
-        for char in line[:space]:
+        space = stripped_line.find(" ")
+        for char in stripped_line[:space]:
             if char != "*":
                 result = False
 
