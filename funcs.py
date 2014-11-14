@@ -310,11 +310,10 @@ def is_headline(line):
     """Check a line to see if it's a headline."""
 
     result = True
+    line = strip(line)
 
     # If it doesn't start with *, then it's not a headline.
     # Likely to cause some bugs in the future.
-    # TODO: Create a function to remove spaces before '*' in headlines.
-    # to prevent bugs resulting from user input.
     if line[0] != "*":
         result = False
     else:
