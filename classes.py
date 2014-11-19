@@ -6,7 +6,7 @@
     Contains the necessary classes and their methods for reading
     ´org´ files.
 
-    :author: dfoyle @ github.com
+    :author: github/serong
     :updated: 2014-11-03
 """
 

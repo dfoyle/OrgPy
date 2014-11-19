@@ -1,5 +1,6 @@
 # Byte-compiled
 *.pyc
+*.py~
 
 # Personal backups.
 *.bak

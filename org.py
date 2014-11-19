@@ -9,7 +9,7 @@
     Eventually, it'll included some loop and functions for a command line
     commands to the features of OrgPy.
 
-    :author: dfoyle @ github.com
+    :author: github/serong
     :updated: 2014-11-03
 """
 

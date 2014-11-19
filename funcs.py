@@ -8,7 +8,7 @@
     Main sections:
     Parsing, Listing, Writing, Helper.
 
-    :author: dfoyle @ github.com
+    :author: github/serong
     :updated: 2014-11-03
 """
 
